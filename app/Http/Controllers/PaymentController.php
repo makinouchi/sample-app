@@ -19,8 +19,41 @@ class PaymentController extends Controller
         ]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return Payment::orderBy('id', 'desc')->get();
+        $filter = $request->query('filter', 'unprocessed');
+
+        $query = Payment::orderBy('id', 'desc');
+
+        // フィルタリングのロジック
+        if ($filter === 'processed') {
+            // 処理済みの支払いのみを取得
+            $query->where('is_processed', true);
+        } elseif ($filter === 'unprocessed') {
+            // 未処理の支払いのみを取得
+            $query->where('is_processed', false);
+        }
+
+        return $query->get();
+    }
+
+    public function markProcessed(Request $request)
+    {
+        $ids = $request->ids;
+        if (!is_array($ids) || empty($ids)) {
+            return response()->json(['message' => 'No ids provided'], 400);
+        }
+        $count = Payment::whereIn('id', $ids)->update(['is_processed' => true]);
+        return response()->json(['message' => 'Updated', 'count' => $count]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $payment = Payment::findOrFail($id);
+        if ($request->has('is_processed')) {
+            $payment->is_processed = $request->is_processed;
+            $payment->save();
+        }
+        return $payment;
     }
 }

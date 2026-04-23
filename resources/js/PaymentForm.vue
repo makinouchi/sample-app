@@ -52,16 +52,30 @@ export default {
   },
   methods: {
     async save() {
-      await axios.post('/payments', {
-        from_user: this.from_user,
-        to_user: this.to_user,
-        amount: this.amount,
-        registered_at: this.registered_at,
-        is_processed: this.is_processed,
-        description: this.description
-      })
+      try {
+        await axios.post('/api/payments', {
+          from_user: this.from_user,
+          to_user: this.to_user,
+          amount: this.amount,
+          registered_at: this.registered_at,
+          is_processed: this.is_processed,
+          description: this.description
+        })
 
-      alert('登録されました')
+        // clear form
+        this.from_user = '';
+        this.to_user = '';
+        this.amount = '';
+        this.registered_at = '';
+        this.description = '';
+        this.is_processed = false;
+
+        // reload page so the list refreshes
+        window.location.reload();
+      } catch (err) {
+        console.error(err);
+        alert('登録に失敗しました');
+      }
     }
   }
 }
