@@ -12,14 +12,6 @@
     </div>
 
     <table border="1">
-      <tr>
-        <th>済</th>
-        <th>id</th>
-        <th>誰から→</th>
-        <th>誰に</th>
-        <th>～のため</th>
-        <th>〇円払う</th>
-      </tr>
       <tr v-for="p in payments" :key="p.id">
         <td>
           <input
@@ -28,11 +20,14 @@
             :checked="p.is_processed || selectedIds.includes(p.id)"
             @change="onCheckboxChange($event, p)">
         </td>
-        <td>{{ p.id }}</td>
+        <td>[{{ p.id }}]</td>
         <td>{{ p.from_user }}</td>
+        <td>→</td>
         <td>{{ p.to_user }}</td>
         <td>{{ p.description }}</td>
+        <td>のため</td>
         <td>{{ p.amount }}</td>
+        <td>円を払う</td>
       </tr>
     </table>
   </div>
