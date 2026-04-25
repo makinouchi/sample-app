@@ -45,12 +45,20 @@ export default {
       from_user: '',
       to_user: '',
       amount: '',
-      registered_at: '',
+      registered_at: this.getToday(),
       description: '',
       is_processed: false
     }
   },
   methods: {
+    getToday() {
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      const mm = String(today.getMonth() + 1).padStart(2, '0');
+      const dd = String(today.getDate()).padStart(2, '0');
+      return `${yyyy}-${mm}-${dd}`;
+    },
+
     async save() {
       try {
         await axios.post('/api/payments', {
@@ -79,4 +87,5 @@ export default {
     }
   }
 }
+
 </script>
