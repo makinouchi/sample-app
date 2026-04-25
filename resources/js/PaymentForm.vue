@@ -2,35 +2,56 @@
   <div>
     <h2>支払い登録</h2>
 
-    <div>
-      <label>処理済み</label>
-      <input type="checkbox" v-model="is_processed">
-    </div>
-
-    <div>
-      <label>内容</label>
-      <input v-model="description">
-    </div>
-
-    <div>
-      <label>誰から</label>
-      <input v-model="from_user">
-    </div>
-
-    <div>
-      <label>誰に</label>
-      <input v-model="to_user">
-    </div>
-
-    <div>
-      <label>金額</label>
-      <input v-model="amount" type="number">
-    </div>
-
-    <div>
-      <label>登録日</label>
-      <input v-model="registered_at" type="date">
-    </div>
+    <table border="1">
+        <tr>
+            <td>
+                <label>処理済み</label>
+            </td>
+            <td>
+                <input type="checkbox" v-model="is_processed">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>内容</label>
+            </td>
+            <td>
+                <input v-model="description">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>誰から</label>
+            </td>
+            <td>
+                <input v-model="from_user">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>誰に</label>
+            </td>
+            <td>
+                <input v-model="to_user">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>金額</label>
+            </td>
+            <td>
+                <input v-model="amount" type="number">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>登録日</label>
+            </td>
+            <td>
+                <input v-model="registered_at" type="date">
+            </td>
+        </tr>
+    </table>
 
     <button @click="save">登録</button>
   </div>
