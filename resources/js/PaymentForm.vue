@@ -1,4 +1,5 @@
 <template>
+  <Menu />
   <div>
     <h2>支払い登録</h2>
 
@@ -58,9 +59,13 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import Menu from './components/Menu.vue';
 
 export default {
+  components: {
+    Menu
+  },
   data() {
     return {
       from_user: '',
