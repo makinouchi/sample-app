@@ -53,7 +53,7 @@
             </td>
         </tr>
     </table>
-
+    <br>
     <button @click="save">登録</button>
   </div>
 </template>

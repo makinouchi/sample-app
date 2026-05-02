@@ -13,6 +13,17 @@
     </div>
 
     <table border="1">
+      <tr>
+        <th>flg</th>
+        <th>id</th>
+        <th>from</th>
+        <th></th>
+        <th>to</th>
+        <th>item</th>
+        <th></th>
+        <th>amount</th>
+        <th></th>
+      </tr>
       <tr v-for="p in payments" :key="p.id">
         <td>
           <input
