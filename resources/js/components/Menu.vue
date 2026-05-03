@@ -14,7 +14,8 @@ export default {
     return {
       menus: [
         { name: '一覧', path: '/payments' },
-        { name: '登録', path: '/' }
+        { name: '登録', path: '/' },
+        { name: 'G一覧', path: '/sheets' },
       ]
     }
   }
