@@ -16,6 +16,7 @@ export default {
         { name: '一覧', path: '/payments' },
         { name: '登録', path: '/' },
         { name: 'G一覧', path: '/sheets' },
+        { name: 'テスト', path: '/commands' },
       ]
     }
   }
